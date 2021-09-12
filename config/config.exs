@@ -7,9 +7,6 @@
 # General application configuration
 import Config
 
-config :depot_demo,
-  ecto_repos: [DepotDemo.Repo]
-
 # Configures the endpoint
 config :depot_demo, DepotDemoWeb.Endpoint,
   url: [host: "localhost"],

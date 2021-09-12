@@ -8,8 +8,6 @@ defmodule DepotDemo.Application do
   @impl true
   def start(_type, _args) do
     children = [
-      # Start the Ecto repository
-      DepotDemo.Repo,
       # Start the Telemetry supervisor
       DepotDemoWeb.Telemetry,
       # Start the PubSub system
