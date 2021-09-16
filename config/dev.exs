@@ -71,7 +71,6 @@ config :depot_demo, DepotDemo.Minio,
 
 # Configure depot storage
 config :depot_demo, DepotDemo.Storage,
-  adapter: DepotS3,
   bucket: "depot-demo-dev",
   config: [
     access_key_id: "minio_key",

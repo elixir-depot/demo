@@ -47,8 +47,8 @@ defmodule DepotDemo.MixProject do
       {:jason, "~> 1.2"},
       {:minio_server, "~> 0.3.2"},
       {:plug_cowboy, "~> 2.5"},
-      {:depot, "~> 0.5.1"},
-      {:depot_s3, "~> 0.1", path: "../depot_s3"}
+      {:depot, "~> 0.5.2"},
+      {:depot_s3, "~> 0.1"}
     ]
   end
 

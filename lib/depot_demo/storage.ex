@@ -1,3 +1,3 @@
 defmodule DepotDemo.Storage do
-  use Depot.Filesystem, otp_app: :depot_demo
+  use Depot.Filesystem, adapter: DepotS3, otp_app: :depot_demo
 end
