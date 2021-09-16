@@ -18,6 +18,14 @@ defmodule DepotDemoWeb.Router do
     pipe_through :browser
 
     get "/", PageController, :index
+
+    scope "/", trailing_slash: true do
+      live "/file", FileLive.Index, :index
+      live "/file/new", FileLive.Index, :new
+      live "/file/*path", FileLive.Index, :index
+    end
+
+    # live "/file/:id", FileLive.Show, :show
   end
 
   # Other scopes may use custom stacks.

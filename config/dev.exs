@@ -46,7 +46,7 @@ config :depot_demo, DepotDemoWeb.Endpoint,
 config :depot_demo, DepotDemoWeb.Endpoint,
   live_reload: [
     patterns: [
-      ~r"priv/static/.*(js|css|png|jpeg|jpg|gif|svg)$",
+      ~r"priv/static/[^uploads].*(js|css|png|jpeg|jpg|gif|svg)$",
       ~r"lib/depot_demo_web/(live|views)/.*(ex)$",
       ~r"lib/depot_demo_web/templates/.*(eex)$"
     ]
@@ -58,6 +58,29 @@ config :logger, :console, format: "[$level] $message\n"
 # Set a higher stacktrace during development. Avoid configuring such
 # in production as building large stacktraces may be expensive.
 config :phoenix, :stacktrace_depth, 20
+
+# Local S3 Server
+config :depot_demo, DepotDemo.Minio,
+  access_key_id: "minio_key",
+  secret_access_key: "minio_secret",
+  scheme: "http://",
+  region: "local",
+  host: "127.0.0.1",
+  port: 9000,
+  console_address: ":9001"
+
+# Configure depot storage
+config :depot_demo, DepotDemo.Storage,
+  adapter: DepotS3,
+  bucket: "depot-demo-dev",
+  config: [
+    access_key_id: "minio_key",
+    secret_access_key: "minio_secret",
+    scheme: "http://",
+    region: "local",
+    host: "127.0.0.1",
+    port: 9000
+  ]
 
 # Initialize plugs at runtime for faster development compilation
 config :phoenix, :plug_init_mode, :runtime

@@ -1,0 +1,36 @@
+<h1>Listing File</h1>
+
+<%= if @live_action in [:new, :edit] do %>
+  <%= live_modal DepotDemoWeb.FileLive.FormComponent,
+    id: @file.id || :new,
+    title: @page_title,
+    action: @live_action,
+    file: @file,
+    return_to: Routes.file_index_path(@socket, :index) %>
+<% end %>
+
+<%= link "Back", to: "../" %>
+
+<table>
+  <thead>
+    <tr>
+      <th>Name</th>
+      <th></th>
+
+      <th></th>
+    </tr>
+  </thead>
+  <tbody id="file">
+    <%= for %mod{} = file <- @file_collection do %>
+      <tr id={"file-#{file.name}"}>
+        <td>
+          <.file file={file} file_type={mod}></.file>
+        </td>
+        <td><%= file.mtime %></td>
+        <td></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<span><%= live_patch "New File", to: Routes.file_index_path(@socket, :new) %></span>

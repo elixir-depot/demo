@@ -1,0 +1,27 @@
+<div>
+  <h2><%= @title %></h2>
+
+  <.form
+    let={_f}
+    for={@changeset}
+    as={:ok}
+    id="file-form"
+    phx-change="validate"
+    phx-target={@myself}>
+    <div phx-drop-target={@uploads.file.ref}>
+      <div>
+        <%= live_file_input @uploads.file %>
+      </div>
+
+      <%= for entry <- @uploads.file.entries do %>
+        <%= entry.client_name %>
+      <% end %>
+
+      <%= for {_ref, msg} <- @uploads.file.errors do %>
+        <%= Phoenix.Naming.humanize(msg) %><br>
+      <% end %>
+    </div>
+  </.form>
+
+  <button type="button" phx-click="back" phx-target={@myself}>Back</button>
+</div>
