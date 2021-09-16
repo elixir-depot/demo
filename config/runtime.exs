@@ -36,10 +36,10 @@ if config_env() == :prod do
     config: [
       access_key_id: System.fetch_env!("MINIO_ROOT_USER"),
       secret_access_key: System.fetch_env!("MINIO_ROOT_PASSWORD"),
-      scheme: "https://",
+      scheme: "http://",
       region: "local",
-      host: "depot-demo-minio.fly.dev",
-      port: 443
+      host: "fra.depot-demo-minio.internal",
+      port: 9000
     ]
 
   # ## Using releases

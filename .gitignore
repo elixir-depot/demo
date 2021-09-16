@@ -30,4 +30,4 @@ npm-debug.log
 /assets/node_modules/
 
 # Ignore local minio storage folder
-minio
+/minio/
